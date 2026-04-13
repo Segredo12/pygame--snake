@@ -5,6 +5,7 @@ import pygame
 from pygame import Color
 from system import InventorySystem
 
+
 # Initialize pygame.
 pygame.init()
 
