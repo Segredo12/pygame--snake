@@ -3,8 +3,7 @@
 ########################
 import pygame
 from pygame import K_SPACE
-
-from dialogue.system import DialogueSystem
+from system import DialogueSystem
 
 # Initialize pygame.
 pygame.init()
