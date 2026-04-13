@@ -2,6 +2,7 @@
 # Main function to test Inventory System. #
 #########################
 import pygame
+from pygame import Color
 from system import InventorySystem
 
 # Initialize pygame.
@@ -22,7 +23,9 @@ inventory = InventorySystem(
     slot_size=100,
     padding=5,
     position_x=0,
-    position_y=0
+    position_y=0,
+    slot_base_color=Color(255, 255, 255),
+    slot_hover_color=Color(255, 255, 0)
 )
 
 # Add test items.
