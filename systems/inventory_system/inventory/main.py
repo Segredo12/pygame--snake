@@ -3,8 +3,13 @@
 #########################
 import pygame
 from pygame import Color
-from system import InventorySystem
 
+import systems
+from system import InventorySystem
+from systems.item_system.item.item import Item
+
+# Use path lib to import sprites.
+from pathlib import Path
 
 # Initialize pygame.
 pygame.init()
@@ -30,9 +35,12 @@ inventory = InventorySystem(
 )
 
 # Add test items.
-inventory.slots[0] = "Sword"
-inventory.slots[1] = "Potion"
-inventory.slots[2] = "Key"
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+ASSETS_DIR = BASE_DIR / "item_system/item/example_assets"
+
+inventory.slots[0] = Item(1, "Sword", ASSETS_DIR / "sword.png")
+inventory.slots[1] = Item(2, "Healing Potion", ASSETS_DIR / "red_potion.png")
+inventory.slots[2] = Item(3, "Strange Key", ASSETS_DIR / "key.png")
 
 
 # Game Loop Logic

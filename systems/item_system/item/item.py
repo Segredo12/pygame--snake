@@ -14,6 +14,6 @@ class Item:
         self. image = None
         if image_path:
             try:
-                self.image = pygame.image.load(image_path).convert_alpha()
+                self.image = pygame.image.load(str(image_path)).convert_alpha()
             except:
                 self.image = None

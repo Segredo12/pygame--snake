@@ -1,6 +1,8 @@
 import pygame
 from pygame import Color
 
+from systems.item_system.item.item import Item
+
 
 class InventorySystem:
 
@@ -104,18 +106,36 @@ class InventorySystem:
 
             # Renders item
             if item is not None:
-                text_surface = self.font.render(item, True, self.slot_base_color)
+                # If item has image just draw it
+                if item.image is not None:
+                    # Scaling image
+                    image = pygame.transform.scale(
+                        item.image,
+                        (self.slot_size - 10, self.slot_size - 10)
+                    )
+                    # Centering image
+                    image_rect = image.get_rect(center=rect.center)
 
-                # Center text in slot.
-                text_rect = text_surface.get_rect(center=rect.center)
+                    screen.blit(image, image_rect)
 
-                screen.blit(text_surface, text_rect)
+                # Fallback draw text if no image.
+                else:
+                    text_surface = self.font.render(item.name, True, self.slot_base_color)
+                    # Center text in slot.
+                    text_rect = text_surface.get_rect(center=rect.center)
+
+                    screen.blit(text_surface, text_rect)
 
         # Renders dragging item
         if self.dragging_item is not None:
-            text_surface = self.font.render(self.dragging_item, True, self.slot_base_color)
-            text_rect = text_surface.get_rect(center=self.mouse_pos)
-            screen.blit(text_surface, text_rect)
+            # Scaling image
+            image = pygame.transform.scale(
+                self.dragging_item.image,
+                (self.slot_size - 10, self.slot_size - 10)
+            )
+            # Centering image
+            image_rect = image.get_rect(center=self.mouse_pos)
+            screen.blit(image, image_rect)
 
     def get_slot_at_pos(self, pos):
         for i in range(len(self.slots)):
