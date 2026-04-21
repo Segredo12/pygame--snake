@@ -1,7 +1,7 @@
 import pygame
 from pygame import Color
 
-from systems.item_system.item.item import Item
+from systems.item_system.item.system import Item
 
 
 class InventorySystem:

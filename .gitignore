@@ -177,6 +177,7 @@ cython_debug/
 systems/dialogue_system/.idea
 systems/inventory_system/.idea
 systems/item_system/.idea
+systems/player-system/.idea
 
 # Abstra
 # Abstra is an AI-powered process automation framework.

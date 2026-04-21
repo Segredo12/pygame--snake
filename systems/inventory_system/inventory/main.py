@@ -6,7 +6,7 @@ from pygame import Color
 
 import systems
 from system import InventorySystem
-from systems.item_system.item.item import Item
+from systems.item_system.item.system import Item
 
 # Use path lib to import sprites.
 from pathlib import Path
