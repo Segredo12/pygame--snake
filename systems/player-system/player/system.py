@@ -13,6 +13,7 @@ class Player:
         self.animation_timer = 0
         self.animation_speed = 10  # Lower equals Faster animation
         self.state = "IDLE"
+        self.facing_right = True
 
         # Movement state
         self.direction = pygame.Vector2(0, 0)
@@ -33,6 +34,12 @@ class Player:
             self.direction.x = -1
         if keys[pygame.K_d]:
             self.direction.x = 1
+
+        # Sprite flipping
+        if self.direction.x > 0:
+            self.facing_right = True
+        elif self.direction.x < 0:
+            self.facing_right = False
 
         # Normalize diagonal movement
         if self.direction.length() > 0:
@@ -69,5 +76,10 @@ class Player:
     def draw(self, screen):
         animation = self.frames[self.state]
         frame = animation[self.current_frame]
+
+        # Flip if facing left
+        if not self.facing_right:
+            frame = pygame.transform.flip(frame, True, False)
+
         rect = frame.get_rect(center=(self.x, self.y))
         screen.blit(frame, rect)
